@@ -1,0 +1,201 @@
+/* --- CƠ BẢN & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* --- THANH ĐIỀU HƯỚNG CHÍNH (NAV) - CANH GIỮA --- */
+nav {
+    background-color: #2c3e50;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Canh chỉnh toàn bộ menu nằm ở giữa */
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Canh giữa các mục bên trong menu */
+}
+
+.nav-list > li {
+    position: relative;
+}
+
+.nav-list li a {
+    display: block;
+    padding: 14px 18px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.nav-list li a:hover {
+    background-color: #1abc9c;
+}
+
+/* --- MENU CẤP 2 & CẤP 3 --- */
+.dropdown {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #34495e;
+    min-width: 240px;
+    display: none; 
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.dropdown .submenu {
+    list-style: none;
+    position: absolute;
+    top: 0 !important;       
+    left: 100% !important;   
+    background-color: #34495e;
+    min-width: 240px;
+    display: none;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 101;
+}
+
+.dropdown.show, .submenu.show {
+    display: block;
+}
+
+.arrow {
+    float: right;
+    font-size: 10px;
+    margin-left: 6px;
+}
+
+/* --- NÚT HAMBURGER MOBILE --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #2c3e50;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1100;
+}
+
+.menu-toggle .bar {
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* --- KHU VỰC LOGO & LIÊN KẾT (LINH HOẠT THEO THIẾT BỊ) --- */
+.logo_all {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+.logo-container {
+    display: flex;
+    flex-wrap: wrap;             /* Tự động xuống dòng khi hết chỗ ngang */
+    justify-content: center;     /* Canh giữa các logo */
+    align-items: center;
+    gap: 20px;                   /* Khoảng cách giữa các logo */
+}
+
+.logo-container a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.logo-container a:hover {
+    transform: scale(1.1);       /* Hiệu ứng phóng to nhẹ khi di chuột vào */
+}
+
+/* Kích thước mặc định của logo trên máy tính (Desktop) */
+.logo-container img {
+    height: 45px;                /* Chiều cao chuẩn, chiều rộng tự co dãn theo tỷ lệ ảnh */
+    width: auto;
+    object-fit: contain;
+}
+
+/* --- RESPONSIVE CHO THIẾT BỊ DI ĐỘNG & TABLET --- */
+@media screen and (max-width: 992px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-container {
+        justify-content: flex-start; /* Trên mobile menu trả về canh trái cho dễ bấm */
+    }
+
+    nav {
+        display: none;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-list > li {
+        width: 100%;
+    }
+
+    .dropdown, .submenu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: #2c3e50;
+        padding-left: 15px;
+    }
+
+    .arrow {
+        float: right;
+    }
+
+    /* Thu nhỏ kích thước logo lại một chút trên màn hình máy tính bảng/mobile nhỏ */
+    .logo-container img {
+        height: 35px;
+    }
+    
+    .logo-container {
+        gap: 12px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Trên điện thoại màn hình rất nhỏ, tinh chỉnh lại kích thước logo và khoảng cách */
+    .logo-container img {
+        height: 28px;
+    }
+    
+    .logo-container {
+        gap: 10px;
+    }
+}
